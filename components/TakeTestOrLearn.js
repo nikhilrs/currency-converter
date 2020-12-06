@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { StyleSheet, Picker, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Picker, Text, View, TextInput, TouchableOpacity, Dimensions } from 'react-native';
+import { AdMobBanner } from 'react-native-admob';
 
 class TakeTestOrLearn extends React.Component {
 	constructor(props) {
@@ -87,6 +88,13 @@ class TakeTestOrLearn extends React.Component {
                     </TouchableOpacity>
 					<Text style={styles.convertedText}> Converted Amount: {this.state.result} </Text>
 				</View>
+				<View style={styles.bannerView}>
+                    <AdMobBanner
+                        adSize="largeBanner"
+                        adUnitID="ca-app-pub-8628320246149288/6127254062"
+                        testDeviceID="0e71ca58363346548bc3205f4b0dda55"
+                        didFailToReceiveAdWithError={this.onFailToRecieveAd} />
+                </View>
 			</View>
 		);
 	}
@@ -145,10 +153,19 @@ const styles = StyleSheet.create({
 	convertedText: {
 		fontFamily: 'sans-serif-condensed',
         fontWeight: 'bold',
-        fontSize: 18,
+        fontSize: 22,
 		color: '#000',
-		marginLeft: 20, marginRight: 20
-	}
+		marginLeft: 20, marginRight: 20,
+		marginBottom: 20 
+	},
+    bannerView: {
+        width: Dimensions.get('window').width,
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 100,
+		marginTop: 10,
+		backgroundColor: 'red'
+    }
 });
 
 export default TakeTestOrLearn;
