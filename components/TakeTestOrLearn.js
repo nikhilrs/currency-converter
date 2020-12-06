@@ -64,7 +64,7 @@ class TakeTestOrLearn extends React.Component {
 
 	render() {
 		return (
-			<View>
+			<View style={styles.container}>
 				<View>
 					<Text style={styles.textHeaderStyle}>Calculate today's conversion rates here!</Text>
 					<TextInput style={styles.textInputStyle}
@@ -101,10 +101,14 @@ class TakeTestOrLearn extends React.Component {
 }
 
 const styles = StyleSheet.create({
+	container: {
+        width: Dimensions.get('window').width - 30,
+        height: '100%',
+        width: '100%'
+    },
 	textHeaderStyle: {
 		height: 40, 
-		// marginLeft: 20, marginRight: 20,
-		marginTop: 50,
+		marginTop: 20,
 		paddingLeft: 20,
 		fontFamily: 'sans-serif-condensed', fontWeight: 'bold', fontSize: 18
 	},
@@ -159,11 +163,12 @@ const styles = StyleSheet.create({
 		marginBottom: 20 
 	},
     bannerView: {
-        width: Dimensions.get('window').width,
-        alignItems: 'center',
+        width: '100%',
         justifyContent: 'center',
-        height: 100,
-		marginTop: 10,
+        alignItems: 'center',
+        position: 'absolute', //Here is the trick
+        bottom: 0, //Here is the trick,
+		height: 100,
 		backgroundColor: 'red'
     }
 });
