@@ -80,7 +80,7 @@ export default class Header extends Component {
                 </View> */}
                 <View style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }}>
                     <View style={styles.headerLabel}>
-                        <Text style={styles.headerText}>Tic Tac Toe</Text>
+                        <Text style={styles.headerText}>Currency Converter</Text>
                     </View>
                 </View>
                 {/* <View style={styles.headerButtons}>
