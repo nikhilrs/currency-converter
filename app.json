@@ -1,4 +1,12 @@
 {
-  "name": "TicTacToe",
-  "displayName": "TicTacToe"
+  "name": "fortuneApp",
+  "displayName": "Fortune",
+  "expo": {
+    "name": "fortuneApp",
+    "slug": "fortuneApp",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
 }
