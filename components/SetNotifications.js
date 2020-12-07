@@ -2,30 +2,20 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
 import { AdMobBanner } from 'react-native-admob';
 
-class HelpPage extends Component {
+class SetNotifications extends Component {
 
     constructor(props) {
         super(props);
-        
-    }
-
-    _closeHelpPage = () => {
-        this.props.closePage();
+        this.state = {
+            
+        };
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.headerLabel}>About</Text>
-                <Text style={styles.aboutLabel}>
-                    This along with several other apps are developed and maintained by a group of enthusiastic developers who want to contribute to the world! More features would be introduced based on the requests and developers availability.
-                </Text>
-                <Text style={styles.adSupportLabel}>
-                    "DO CHECK OUT OUR OTHER APPS. ALSO PLEASE DONT FORGET TO RATE AND COMMENT IN PLAY STORE."
-                </Text>
-                <Text style={styles.adSupportLabel}>
-                    We need your support! Please check the ad links in the app if it interests you, it helps us maintain the application and the development cost. Thanks in advance for your support!
-                </Text>
+                <Text style={styles.headerLabel}>Help Page</Text>
+                
                 <View style={styles.bannerView}>
                     <AdMobBanner
                         adSize="largeBanner"
@@ -54,7 +44,7 @@ const styles = StyleSheet.create({
         height: 100
     },
     listItem: {
-        marginTop: 3,
+        marginTop: 5,
     },
     text: {
        color: '#4f603c',
@@ -63,7 +53,9 @@ const styles = StyleSheet.create({
        fontFamily: "sans-serif-condensed"
     },
     scrollView: {
-        height: Dimensions.get('window').height - 160
+        height: Dimensions.get('window').height - 160,
+        marginLeft: 15,
+        marginRight: 15
     },
     headerLabel: {
         width: Dimensions.get('window').width / 2,
@@ -72,26 +64,15 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontWeight: 'bold',
         marginBottom: 20,
-        marginLeft: 15,
-        marginRight: 15
+        marginLeft: 15
     },
     adSupportLabel: {
-        color: '#FFFFFF',
+        color: 'white',
         fontFamily: "sans-serif-condensed",
         fontSize: 17,
         fontStyle: 'italic',
-        marginBottom: 15,
-        marginLeft: 15,
-        marginRight: 15
-    },
-    aboutLabel: {
-        fontFamily: "sans-serif-condensed",
-        fontSize: 17,
-        marginBottom: 15,
-        color: '#FFFFFF',
-        marginLeft: 15,
-        marginRight: 15
+        marginTop: 15
     }
 });
 
-export default HelpPage;
+export default SetNotifications;

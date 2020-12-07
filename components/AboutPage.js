@@ -17,6 +17,9 @@ class AboutPage extends Component {
             <View style={styles.container}>
                 <Text style={styles.headerLabel}>About</Text>
                 <Text style={styles.aboutLabel}>
+                    Please note we use external services to calculate the rates real-time.
+                </Text>
+                <Text style={styles.aboutLabel}>
                     This along with several other apps are developed and maintained by a group of enthusiastic developers who want to contribute to the world! More features would be introduced based on the requests and developers availability.
                 </Text>
                 <Text style={styles.adSupportLabel}>

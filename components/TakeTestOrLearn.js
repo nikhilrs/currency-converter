@@ -174,14 +174,14 @@ const styles = StyleSheet.create({
         fontSize: 22,
 		color: '#000',
 		marginLeft: 20, marginRight: 20,
-		marginBottom: 20 
+		// marginBottom: 20 
 	},
     bannerView: {
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute', //Here is the trick
-        bottom: 0, //Here is the trick,
+        bottom: 50, //Here is the trick,
 		height: 100
     }
 });

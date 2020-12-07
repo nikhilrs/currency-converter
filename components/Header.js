@@ -17,7 +17,7 @@ export default class Header extends Component {
 
     hideMenu = (menuSelected) => {
         this._menu.hide();
-        // this.props.selectedMenu(menuSelected);
+        this.props.selectedMenu(menuSelected);
     };
 
     showMenu = () => {
@@ -73,8 +73,8 @@ export default class Header extends Component {
                             </TouchableOpacity>
                         } >
                         <MenuItem onPress={() => this.hideMenu('Home')}><Text style={styles.menuItem}>Home</Text></MenuItem><MenuDivider />
-                        <MenuItem onPress={() => this.hideMenu('Saved')}><Text style={styles.menuItem}>Saved</Text></MenuItem><MenuDivider />
-                        <MenuItem onPress={() => this.hideMenu('Help')}><Text style={styles.menuItem}>Help</Text></MenuItem><MenuDivider />
+                        {/* <MenuItem onPress={() => this.hideMenu('Notifications')}><Text style={styles.menuItem}>Saved</Text></MenuItem><MenuDivider /> */}
+                        {/* <MenuItem onPress={() => this.hideMenu('Help')}><Text style={styles.menuItem}>Help</Text></MenuItem><MenuDivider /> */}
                         <MenuItem onPress={() => this.hideMenu('About')}><Text style={styles.menuItem}>About</Text></MenuItem>
                     </Menu>
                 </View>
