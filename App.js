@@ -30,7 +30,8 @@ export default function App() {
 	return (
 		<View style={styles.container}>
 			<Header />
-			<NavigationContainer>
+			<TakeTestOrLearn />
+			{/* <NavigationContainer>
 				<RootStack.Navigator initialRouteName="TakeTestOrLearn">
 					<RootStack.Screen name="Landing" component={LandingView} options={{ headerShown: false }} />
 					<RootStack.Screen name="About" component={AboutPage} options={{ headerShown: false }} />
@@ -44,7 +45,7 @@ export default function App() {
 					<RootStack.Screen name="TestResults" component={TestResults} options={{ headerShown: false }} />
 					<RootStack.Screen name="TestReview" component={TestReview} options={{ headerShown: false }} />
 				</RootStack.Navigator>
-			</NavigationContainer>
+			</NavigationContainer> */}
 		</View>
 	);
 }

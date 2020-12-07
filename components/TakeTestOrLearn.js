@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { StyleSheet, Picker, Text, View, TextInput, TouchableOpacity, Dimensions } from 'react-native';
 import { AdMobBanner } from 'react-native-admob';
+import DropDownPicker from 'react-native-dropdown-picker';
 
 class TakeTestOrLearn extends React.Component {
 	constructor(props) {
@@ -10,7 +11,7 @@ class TakeTestOrLearn extends React.Component {
 			result: null,
 			fromCurrency: "USD",
 			toCurrency: "GBP",
-			amount: 1,
+			amount: '',
 			currencies: []
 		};
 	}
@@ -40,7 +41,7 @@ class TakeTestOrLearn extends React.Component {
 				.then(response => {
 					const result =
 						this.state.amount * response.data.rates[this.state.toCurrency];
-					this.setState({ result: result.toFixed(5) });
+					this.setState({ result: result.toFixed(2) });
 				})
 				.catch(error => {
 					console.log("Opps", error.message);
@@ -66,23 +67,35 @@ class TakeTestOrLearn extends React.Component {
 		return (
 			<View style={styles.container}>
 				<View>
-					<Text style={styles.textHeaderStyle}>Calculate today's conversion rates here!</Text>
+					<Text style={styles.textHeaderStyle}>Calculate TODAY's conversion rates here!</Text>
 					<TextInput style={styles.textInputStyle}
-						onChangeText={text => this.onChangeText(text)} value={this.state.amount.toString()} />
-					<Picker style={styles.pickerStyle} name="from" mode="dropdown"
-						selectedValue={this.state.fromCurrency}
-						onValueChange={event => this.selectFromHandler(event)}> 
-							{this.state.currencies.map((item, index) => {
-								return (<Picker.Item label={item} value={item} key={index}/>) 
-							})}
-					</Picker>
-					<Picker style={styles.pickerStyle}  name="to" mode="dropdown"
-						selectedValue={this.state.toCurrency}
-						onValueChange={event => this.selectToHandler(event)}> 
-							{this.state.currencies.map((item, index) => {
-								return (<Picker.Item label={item} value={item} key={index}/>) 
-							})}
-					</Picker>
+						onChangeText={text => this.onChangeText(text)} 
+						value={this.state.amount.toString()} placeholder="Please enter amount to convert"/>
+					<View style={{ borderWidth: 1, borderColor: '#000', borderRadius: 4, marginLeft: 20, marginRight: 20, height: 42 }}>
+						<Picker style={styles.pickerStyle}  name="from" mode="dropdown"
+							selectedValue={this.state.fromCurrency}
+							onValueChange={event => this.selectFromHandler(event)} > 
+								{this.state.currencies.map((item, index) => {
+									return (<Picker.Item label={item} value={item} key={index}/>) 
+								})}
+						</Picker>
+					</View>
+					<View style={{ justifyContent: 'center', alignItems: 'center' }}>
+						<Text style={{ height: 40, marginTop: 20, fontFamily: 'sans-serif-condensed', 
+							fontWeight: 'bold', fontSize: 18, color: '#000' }}>
+								TO
+						</Text>
+					</View>
+					<View style={{ borderWidth: 1, borderColor: '#000', borderRadius: 4, 
+						marginLeft: 20, marginRight: 20, height: 42 }}>
+						<Picker style={styles.pickerStyle}  name="to" mode="dropdown"
+							selectedValue={this.state.toCurrency}
+							onValueChange={event => this.selectToHandler(event)}> 
+								{this.state.currencies.map((item, index) => {
+									return (<Picker.Item label={item} value={item} key={index}/>) 
+								})}
+						</Picker>
+					</View>
 					<TouchableOpacity style={styles.convertButtonStyle} onPress={this.convertHandler}>
                         <Text style={styles.text}>Convert</Text>
                     </TouchableOpacity>
@@ -110,10 +123,11 @@ const styles = StyleSheet.create({
 		height: 40, 
 		marginTop: 20,
 		paddingLeft: 20,
-		fontFamily: 'sans-serif-condensed', fontWeight: 'bold', fontSize: 18
+		fontFamily: 'sans-serif-condensed', fontWeight: 'bold', fontSize: 18,
+		color: '#000'
 	},
 	textInputStyle: {
-		height: 40, 
+		height: 60, 
 		borderColor: 'gray', borderWidth: 1, 
 		marginLeft: 20, marginRight: 20,
 		borderRadius: 5, borderWidth: 1,
@@ -168,8 +182,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         position: 'absolute', //Here is the trick
         bottom: 0, //Here is the trick,
-		height: 100,
-		backgroundColor: 'red'
+		height: 100
     }
 });
 

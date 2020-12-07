@@ -6,7 +6,7 @@ export default class Header extends Component {
 
     _showHelpPage = () => {
         this._menu.hide();
-        // this.props.selectedMenu('Help');
+        this.props.selectedMenu('Help');
     }
 
     _menu = null;
@@ -65,7 +65,7 @@ export default class Header extends Component {
 
         return (
             <View style={styles.container}>
-                {/* <View style={{ width: '20%', paddingLeft: 15 }}>
+                <View style={{ width: '20%', paddingLeft: 15 }}>
                     <Menu ref={this.setMenuRef}
                         button={ 
                             <TouchableOpacity onPress={this.showMenu} >
@@ -77,17 +77,17 @@ export default class Header extends Component {
                         <MenuItem onPress={() => this.hideMenu('Help')}><Text style={styles.menuItem}>Help</Text></MenuItem><MenuDivider />
                         <MenuItem onPress={() => this.hideMenu('About')}><Text style={styles.menuItem}>About</Text></MenuItem>
                     </Menu>
-                </View> */}
+                </View>
                 <View style={{ width: '100%', alignItems: 'center', justifyContent: 'center' }}>
                     <View style={styles.headerLabel}>
                         <Text style={styles.headerText}>Currency Converter</Text>
                     </View>
                 </View>
-                {/* <View style={styles.headerButtons}>
+                <View style={styles.headerButtons}>
                     <TouchableOpacity onPress={this._showHelpPage}>
                         <Image style={styles.infoIconHelp} source={require('../assets/information.png')} />
                     </TouchableOpacity>
-                </View> */}
+                </View>
             </View>
         )
     }
