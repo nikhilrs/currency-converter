@@ -1,6 +1,10 @@
 rootProject.name = 'myreactapp'
 include ':react-native-android-speech'
 project(':react-native-android-speech').projectDir = new File(settingsDir, '../node_modules/react-native-android-speech')
+
+include ':react-native-android-local-notification'
+project(':react-native-android-local-notification').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-android-local-notification/android')
+
 include ':react-native-voice'
 project(':react-native-voice').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-voice/android')
 include ':react-native-admob'
@@ -8,6 +12,7 @@ project(':react-native-admob').projectDir = new File(rootProject.projectDir, '..
 include ':VoiceModule'
 project(':VoiceModule').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-kie-android-voice')
 apply from: '../node_modules/react-native-unimodules/gradle.groovy'
+
 includeUnimodulesProjects()
 
 apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle");

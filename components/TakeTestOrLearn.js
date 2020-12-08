@@ -11,7 +11,7 @@ class TakeTestOrLearn extends React.Component {
 			result: null,
 			fromCurrency: "USD",
 			toCurrency: "GBP",
-			amount: '',
+			amount: '1',
 			currencies: []
 		};
 	}
@@ -63,6 +63,10 @@ class TakeTestOrLearn extends React.Component {
 		this.setState({ amount: text });
 	}
 
+	onFailToRecieveAd = (error) => {
+		console.log(error);
+	}
+
 	render() {
 		return (
 			<View style={styles.container}>
@@ -71,7 +75,7 @@ class TakeTestOrLearn extends React.Component {
 					<TextInput style={styles.textInputStyle}
 						onChangeText={text => this.onChangeText(text)} 
 						value={this.state.amount.toString()} placeholder="Please enter amount to convert"/>
-					<View style={{ borderWidth: 1, borderColor: '#000', borderRadius: 4, marginLeft: 20, marginRight: 20, height: 42 }}>
+					<View style={{ borderWidth: 1, borderColor: '#000', borderRadius: 4, marginLeft: 20, marginRight: 20, height: 42, marginBottom: 20 }}>
 						<Picker style={styles.pickerStyle}  name="from" mode="dropdown"
 							selectedValue={this.state.fromCurrency}
 							onValueChange={event => this.selectFromHandler(event)} > 
@@ -80,14 +84,14 @@ class TakeTestOrLearn extends React.Component {
 								})}
 						</Picker>
 					</View>
-					<View style={{ justifyContent: 'center', alignItems: 'center' }}>
-						<Text style={{ height: 40, marginTop: 20, fontFamily: 'sans-serif-condensed', 
+					<View style={{ justifyContent: 'center', alignItems: 'center', marginBottom: 20}}>
+						<Text style={{ fontFamily: 'sans-serif-condensed', 
 							fontWeight: 'bold', fontSize: 18, color: '#000' }}>
 								TO
 						</Text>
 					</View>
 					<View style={{ borderWidth: 1, borderColor: '#000', borderRadius: 4, 
-						marginLeft: 20, marginRight: 20, height: 42 }}>
+						marginLeft: 20, marginRight: 20, height: 42, marginBottom: 20 }}>
 						<Picker style={styles.pickerStyle}  name="to" mode="dropdown"
 							selectedValue={this.state.toCurrency}
 							onValueChange={event => this.selectToHandler(event)}> 
@@ -100,14 +104,14 @@ class TakeTestOrLearn extends React.Component {
                         <Text style={styles.text}>Convert</Text>
                     </TouchableOpacity>
 					<Text style={styles.convertedText}> Converted Amount: {this.state.result} </Text>
+					<View style={styles.bannerView}>
+						<AdMobBanner
+							adSize="largeBanner"
+							adUnitID="ca-app-pub-8628320246149288/6127254062"
+							testDeviceID="0e71ca58363346548bc3205f4b0dda55"
+							didFailToReceiveAdWithError={this.onFailToRecieveAd} />
+					</View>
 				</View>
-				<View style={styles.bannerView}>
-                    <AdMobBanner
-                        adSize="largeBanner"
-                        adUnitID="ca-app-pub-8628320246149288/6127254062"
-                        testDeviceID="0e71ca58363346548bc3205f4b0dda55"
-                        didFailToReceiveAdWithError={this.onFailToRecieveAd} />
-                </View>
 			</View>
 		);
 	}
@@ -115,8 +119,8 @@ class TakeTestOrLearn extends React.Component {
 
 const styles = StyleSheet.create({
 	container: {
-        width: Dimensions.get('window').width - 30,
-        height: '100%',
+		width: Dimensions.get('window').width - 30,
+		height: '100%',
         width: '100%'
     },
 	textHeaderStyle: {
@@ -124,14 +128,15 @@ const styles = StyleSheet.create({
 		marginTop: 20,
 		paddingLeft: 20,
 		fontFamily: 'sans-serif-condensed', fontWeight: 'bold', fontSize: 18,
-		color: '#000'
+		color: '#000',
+		marginBottom: 20,
 	},
 	textInputStyle: {
 		height: 60, 
 		borderColor: 'gray', borderWidth: 1, 
 		marginLeft: 20, marginRight: 20,
 		borderRadius: 5, borderWidth: 1,
-		marginTop: 20, marginBottom: 20,
+		marginBottom: 20,
 		paddingLeft: 20,
 		fontFamily: 'sans-serif-condensed', fontWeight: 'bold',
         fontSize: 18, color: '#000', paddingTop: 7
@@ -144,7 +149,6 @@ const styles = StyleSheet.create({
 		marginRight: 20,
 		borderRadius: 5,
 		borderWidth: 1,
-		marginBottom: 20,
 		fontFamily: 'sans-serif-condensed',
         fontWeight: 'bold',
         fontSize: 18,
@@ -156,7 +160,6 @@ const styles = StyleSheet.create({
 		marginRight: 20,
 		borderRadius: 5,
 		borderWidth: 1,
-		marginTop: 20,
 		marginBottom: 20,
 		backgroundColor: "#841584",
 		justifyContent: 'center',
@@ -174,15 +177,17 @@ const styles = StyleSheet.create({
         fontSize: 22,
 		color: '#000',
 		marginLeft: 20, marginRight: 20,
-		marginBottom: 20 
+		height: 30,
+		marginBottom: 20
 	},
     bannerView: {
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
-        position: 'absolute', //Here is the trick
+        position: 'relative', //Here is the trick
         bottom: 0, //Here is the trick,
-		height: 100
+		height: 100,
+		// backgroundColor: 'red'
     }
 });
 

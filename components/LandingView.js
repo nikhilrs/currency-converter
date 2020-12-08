@@ -3,34 +3,74 @@ import { StyleSheet, View, Image, TouchableOpacity, Text, Dimensions } from 'rea
 
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import Header from './Header';
+import HelpPage from './HelpPage';
+import AboutPage from './AboutPage';
+import SetNotifications from './SetNotifications';
+import TakeTestOrLearn from './TakeTestOrLearn';
 
 export default class LandingView extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            
+            showLandingView: true,
+            showNotificationsPage: false,
+            showHelpPage: false,
+            showAboutPage: false,
         };
     }
 
-    _selectedCategory = (category) => {
-        this.props.navigation.navigate('TakeTestOrLearn');
+    _selectedMenu = (menuItem) => {
+        switch (menuItem) {
+            case 'Home':
+                this._showLandingView(); break;
+            case 'Notifications':
+                this._showNotificationsPage();
+                break;
+            case 'Help':
+                this._showHelpPage();
+                break;
+            case 'About':
+                this._showAboutPage();
+                break;
+            default:
+                break;
+        }
+    }
+
+    _showLandingView = () => { 
+        this.setState({ showLandingView: true, showNotificationsPage: false, showHelpPage: false, showAboutPage: false });
+    }
+
+    _showNotificationsPage = () => {
+        this.setState({ showLandingView: false, showNotificationsPage: true, showHelpPage: false, showAboutPage: false });
+    }
+
+    _showHelpPage = () => {
+        this.setState({ showLandingView: false, showNotificationsPage: false, showHelpPage: true, showAboutPage: false });
+    }
+
+    _showAboutPage = () => {
+        this.setState({ showLandingView: false, showNotificationsPage: false, showHelpPage: false, showAboutPage: true });
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <View style={styles.buttons}>
-                    <TouchableOpacity style={styles.kidsAdultsButton} onPress={() => this._selectedCategory('kids')}>
-                        <Text style={styles.text}>Quiz for Kids</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.kidsAdultsButton} onPress={() => this._selectedCategory('adults')}>
-                        <Text style={styles.text}>Quiz for Adults</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.kidsAdultsButton} onPress={() => this._selectedCategory('adults')}>
-                        <Text style={styles.text}>Bible Quiz</Text>
-                    </TouchableOpacity>
-                </View>
+                <Header selectedMenu = {this._selectedMenu}/>
+                {
+                    this.state.showLandingView ? <TakeTestOrLearn text={this.state.textToLoad} /> : null
+                }
+                {
+                    this.state.showNotificationsPage ? <SetNotifications /> : null
+                }
+                {
+                    this.state.showHelpPage ? <HelpPage /> : null
+                }
+                {
+                    this.state.showAboutPage ? <AboutPage /> : null
+                }
             </View>
         );
     };
@@ -38,28 +78,8 @@ export default class LandingView extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    buttons: {
-        marginTop: 100,
-        height: 100,
-    },
-    kidsAdultsButton: {
-        height: 60,
-        borderRadius: 5, borderColor: 'white', borderWidth: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#3584d4',
-        shadowColor: '#2AC062',
-        width: 180,
-        marginBottom: 40
-    },
-    text: {
-        fontFamily: 'sans-serif-condensed',
-        fontWeight: 'bold',
-        fontSize: 16,
-        color: '#FFFFFF'
+        // display: 'flex',
+        // alignItems: 'center',
+        // marginTop: 25
     }
 });

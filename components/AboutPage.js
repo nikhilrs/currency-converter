@@ -17,6 +17,9 @@ class AboutPage extends Component {
             <View style={styles.container}>
                 <Text style={styles.headerLabel}>About</Text>
                 <Text style={styles.aboutLabel}>
+                    Please note we use external services to calculate the rates real-time.
+                </Text>
+                <Text style={styles.aboutLabel}>
                     This along with several other apps are developed and maintained by a group of enthusiastic developers who want to contribute to the world! More features would be introduced based on the requests and developers availability.
                 </Text>
                 <Text style={styles.adSupportLabel}>
@@ -42,7 +45,7 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width - 30,
         height: '100%',
         width: '100%',
-        backgroundColor: '#3584d4'
+        // backgroundColor: '#3584d4'
     },
     bannerView: {
         width: '100%',
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
     text: {
        color: '#4f603c',
        fontSize: 16,
-       color: '#FFFFFF',
+       color: '#000',
        fontFamily: "sans-serif-condensed"
     },
     scrollView: {
@@ -68,14 +71,15 @@ const styles = StyleSheet.create({
         width: Dimensions.get('window').width / 2,
         fontFamily: 'sans-serif-condensed',
         fontSize: 22,
-        color: '#FFFFFF',
+        color: '#000',
         fontWeight: 'bold',
+        marginTop: 20,
         marginBottom: 20,
         marginLeft: 15,
         marginRight: 15
     },
     adSupportLabel: {
-        color: '#FFFFFF',
+        color: '#000',
         fontFamily: "sans-serif-condensed",
         fontSize: 17,
         fontStyle: 'italic',
@@ -87,7 +91,7 @@ const styles = StyleSheet.create({
         fontFamily: "sans-serif-condensed",
         fontSize: 17,
         marginBottom: 15,
-        color: '#FFFFFF',
+        color: '#000',
         marginLeft: 15,
         marginRight: 15
     }

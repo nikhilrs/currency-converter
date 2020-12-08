@@ -21,6 +21,7 @@
     "react-dom": "16.13.1",
     "react-native": "~0.63.3",
     "react-native-admob": "^2.0.0-beta.6",
+    "react-native-android-local-notification": "^3.0.0",
     "react-native-android-speech": "0.0.6",
     "react-native-awesome-alerts": "^1.3.3",
     "react-native-circles": "1.0.1",

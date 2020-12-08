@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.net.Uri;
 
+import com.staltz.reactnativeandroidlocalnotification.NotificationPackage;    // <- Add this line 
+
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.sbugert.rnadmob.RNAdMobPackage;
