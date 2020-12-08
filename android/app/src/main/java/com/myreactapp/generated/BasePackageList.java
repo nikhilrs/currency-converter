@@ -1,4 +1,4 @@
-package com.utilityhubtictactoe.generated;
+package com.utilityhubcurrency.generated;
 
 import java.util.Arrays;
 import java.util.List;
